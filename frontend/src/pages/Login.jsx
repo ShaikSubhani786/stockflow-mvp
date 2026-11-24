@@ -61,7 +61,7 @@ function Login() {
   return (
     <div className="login-page">
       <div className="login-card">
-        <h1>StockFlow</h1>
+        <h1 style={{ color: "#2563eb" }}>StockFlow</h1>
 
         <p>Login to manage your inventory</p>
 
