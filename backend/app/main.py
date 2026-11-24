@@ -1,4 +1,4 @@
-
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -17,11 +17,16 @@ app = FastAPI(
     version="1.0.0"
 )
 
-
 # CORS configuration
+settings_frontend_url = os.getenv(
+    "FRONTEND_URL",
+    "http://localhost:5173"
+)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        settings_frontend_url,
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "http://localhost:5174",
@@ -31,7 +36,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"]
 )
-
 
 # Exception handlers
 app.add_exception_handler(
